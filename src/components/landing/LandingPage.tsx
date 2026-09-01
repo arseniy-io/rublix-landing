@@ -162,7 +162,7 @@ function Scenarios({ content }: LandingPageProps) {
               <h3>{item.title}</h3>
               <p>{item.description}</p>
             </div>
-            <ScenarioVisual icon={item.icon} tone={item.tone} />
+            <ScenarioVisual icon={item.icon} tone={item.tone} cardKind={item.cardKind} />
           </article>
         ))}
       </div>

@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 
 import { getLandingContent } from "@/content";
 import { ruContent } from "@/content/local/ru";
+import { CARD_PAYMENT_FEE, VISA_ISSUE_PRICE } from "@/content/productFacts";
 
 describe("Russian landing content", () => {
   it("keeps the landing independent and points every account CTA to the confirmed cabinet", async () => {
@@ -29,6 +30,29 @@ describe("Russian landing content", () => {
     expect(visaDaily?.visa).toBe("Не указано");
     expect(ruContent.tariffs.withdrawalNote).toContain("USDT");
     expect(ruContent.tariffs.withdrawalNote).toContain("уточняйте отдельно");
+  });
+
+  it("publishes the confirmed Visa price and card payment fee consistently", () => {
+    const visaCard = ruContent.cards.items.find((card) => card.kind === "visa");
+    const paymentFeeRow = ruContent.tariffs.cardRows.find(
+      (row) => row.label === "Комиссия за оплату",
+    );
+    const travelScenario = ruContent.scenarios.items.find(
+      (scenario) => scenario.title === "Покупки в поездках",
+    );
+
+    expect(visaCard?.price).toBe(VISA_ISSUE_PRICE);
+    expect(ruContent.hero.facts.find((fact) => fact.label === "Visa")?.value).toContain(
+      VISA_ISSUE_PRICE,
+    );
+    expect(paymentFeeRow?.mir).toBe(CARD_PAYMENT_FEE);
+    expect(paymentFeeRow?.visa).toBe(CARD_PAYMENT_FEE);
+    expect(ruContent.cards.items.every((card) =>
+      card.features.some(
+        (feature) => feature.label === "Комиссия за оплату" && feature.value === CARD_PAYMENT_FEE,
+      ),
+    )).toBe(true);
+    expect(travelScenario?.cardKind).toBe("visa");
   });
 
   it("does not publish unverified absolute promises", () => {

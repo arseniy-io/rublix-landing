@@ -57,6 +57,7 @@ export interface LandingContent {
       title: string;
       description: string;
       tone: "light" | "dark" | "neutral";
+      cardKind: "mir" | "visa";
     }>;
   };
   cards: {

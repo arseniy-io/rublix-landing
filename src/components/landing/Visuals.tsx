@@ -2,6 +2,7 @@ import { ArrowDownToLine, ArrowUpRight, Plus, Repeat2 } from "lucide-react";
 
 import { Brand } from "@/components/landing/Brand";
 import { LandingIcon } from "@/components/landing/LandingIcon";
+import { VISA_ISSUE_PRICE } from "@/content/productFacts";
 import type { IconName } from "@/content/types";
 
 interface PaymentCardProps {
@@ -21,7 +22,7 @@ export function PaymentCard({ kind, className = "", compact = false }: PaymentCa
       <Brand compact inverse={!isMir} />
       <span className="payment-card__accent" />
       <span className="payment-card__caption">
-        {isMir ? "МИР · РОССИЯ · 0 ₽" : "VISA · USD · 1 999 ₽"}
+        {isMir ? "МИР · РОССИЯ · 0 ₽" : `VISA · USD · ${VISA_ISSUE_PRICE}`}
       </span>
     </div>
   );
@@ -77,15 +78,16 @@ export function HeroVisual() {
 interface ScenarioVisualProps {
   icon: IconName;
   tone: "light" | "dark" | "neutral";
+  cardKind: "mir" | "visa";
 }
 
-export function ScenarioVisual({ icon, tone }: ScenarioVisualProps) {
+export function ScenarioVisual({ icon, tone, cardKind }: ScenarioVisualProps) {
   return (
     <div className={`scenario-visual scenario-visual--${tone}`} aria-hidden="true">
       <span className="scenario-visual__orb">
         <LandingIcon name={icon} size={30} strokeWidth={1.5} />
       </span>
-      <PaymentCard kind={tone === "dark" ? "visa" : "mir"} compact />
+      <PaymentCard kind={cardKind} compact />
       <span className="scenario-visual__line" />
     </div>
   );

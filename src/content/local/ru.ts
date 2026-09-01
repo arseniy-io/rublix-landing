@@ -1,4 +1,5 @@
 import type { LandingContent } from "@/content/types";
+import { CARD_PAYMENT_FEE, VISA_ISSUE_PRICE } from "@/content/productFacts";
 
 const ACCOUNT_URL = "https://lk.rublix-wallet.com";
 const SUPPORT_URL = "https://t.me/rublix_support";
@@ -8,7 +9,7 @@ export const ruContent = {
   metadata: {
     title: "Rublix - виртуальные карты МИР и Visa для оплат в России и за рубежом",
     description:
-      "Один кошелёк и две виртуальные карты: бесплатная МИР для России и Visa за 1 999 ₽ для зарубежных сервисов, подписок и поездок.",
+      `Один кошелёк и две виртуальные карты: бесплатная МИР для России и Visa за ${VISA_ISSUE_PRICE} для зарубежных сервисов, подписок и поездок.`,
   },
   links: {
     account: ACCOUNT_URL,
@@ -48,9 +49,9 @@ export const ruContent = {
     note: "Для граждан РФ от 18 лет. Обычно оформление занимает 3-4 минуты после проверки документов.",
     facts: [
       { icon: "card", label: "МИР", value: "выпуск 0 ₽" },
-      { icon: "card", label: "Visa", value: "выпуск 1 999 ₽" },
+      { icon: "card", label: "Visa", value: `выпуск ${VISA_ISSUE_PRICE}` },
       { icon: "check", label: "Обслуживание", value: "бесплатно" },
-      { icon: "check", label: "Оплата", value: "комиссия 0%" },
+      { icon: "check", label: "Оплата", value: `комиссия ${CARD_PAYMENT_FEE}` },
     ],
   },
   scenarios: {
@@ -63,24 +64,27 @@ export const ruContent = {
         title: "Оплата в России",
         description: "Повседневные покупки в магазинах и на российских сайтах.",
         tone: "light",
+        cardKind: "mir",
       },
       {
         icon: "globe",
         title: "Зарубежные сервисы",
         description: "Подписки, стриминг и иностранные интернет-магазины.",
         tone: "dark",
+        cardKind: "visa",
       },
       {
         icon: "plane",
         title: "Покупки в поездках",
         description: "Оплата отелей, билетов и покупок за границей.",
         tone: "neutral",
+        cardKind: "visa",
       },
     ],
   },
   cards: {
     title: "Выберите карту под свою задачу",
-    intro: "Обе карты виртуальные, обслуживаются бесплатно и не имеют комиссии Rublix за оплату.",
+    intro: `Обе карты виртуальные, обслуживаются бесплатно. Комиссия Rublix за оплату составляет ${CARD_PAYMENT_FEE}.`,
     items: [
       {
         kind: "mir",
@@ -90,7 +94,7 @@ export const ruContent = {
         currency: "Рубли",
         features: [
           { label: "Обслуживание", value: "Бесплатно" },
-          { label: "Комиссия за оплату", value: "0%" },
+          { label: "Комиссия за оплату", value: CARD_PAYMENT_FEE },
           { label: "Мобильная оплата", value: "Mir Pay" },
           { label: "Лимит за операцию", value: "100 000 ₽" },
           { label: "Лимит в сутки", value: "200 000 ₽" },
@@ -106,11 +110,11 @@ export const ruContent = {
         kind: "visa",
         name: "Карта Visa",
         purpose: "Для зарубежных сайтов, подписок, поездок и покупок за границей.",
-        price: "1 999 ₽",
+        price: VISA_ISSUE_PRICE,
         currency: "USD",
         features: [
           { label: "Обслуживание", value: "Бесплатно" },
-          { label: "Комиссия за оплату", value: "0%" },
+          { label: "Комиссия за оплату", value: CARD_PAYMENT_FEE },
           { label: "Мобильная оплата", value: "Apple Pay и Google Pay" },
           { label: "Лимит за операцию", value: "50 000 $" },
           { label: "География", value: "Не работает в Украине и Беларуси" },
@@ -189,20 +193,20 @@ export const ruContent = {
   },
   tariffs: {
     title: "Основные тарифы и лимиты",
-    snapshot: "Условия на 30 августа 2026 года",
+    snapshot: "Условия на 1 сентября 2026 года",
     intro: "Перед оформлением проверьте актуальные значения в личном кабинете.",
     summary: [
       { icon: "card", label: "МИР", value: "0 ₽" },
-      { icon: "card", label: "Visa", value: "1 999 ₽" },
+      { icon: "card", label: "Visa", value: VISA_ISSUE_PRICE },
       { icon: "wallet", label: "Пополнение", value: "0%" },
-      { icon: "check", label: "Оплата", value: "0%" },
+      { icon: "check", label: "Оплата", value: CARD_PAYMENT_FEE },
       { icon: "send", label: "Вывод рублей", value: "0%" },
     ],
     cardsTitle: "Лимиты карт",
     cardRows: [
-      { label: "Выпуск", mir: "0 ₽", visa: "1 999 ₽" },
+      { label: "Выпуск", mir: "0 ₽", visa: VISA_ISSUE_PRICE },
       { label: "Обслуживание", mir: "Бесплатно", visa: "Бесплатно" },
-      { label: "Комиссия за оплату", mir: "0%", visa: "0%" },
+      { label: "Комиссия за оплату", mir: CARD_PAYMENT_FEE, visa: CARD_PAYMENT_FEE },
       { label: "За операцию", mir: "100 000 ₽", visa: "50 000 $" },
       { label: "В сутки", mir: "200 000 ₽", visa: "Не указано" },
       { label: "В месяц", mir: "200 000 ₽", visa: "Не указано" },
@@ -270,7 +274,7 @@ export const ruContent = {
       },
       {
         question: "Сколько стоит выпуск?",
-        answer: "Карта МИР оформляется бесплатно. Выпуск Visa стоит 1 999 ₽.",
+        answer: `Карта МИР оформляется бесплатно. Выпуск Visa стоит ${VISA_ISSUE_PRICE}.`,
       },
       {
         question: "Есть ли плата за обслуживание?",
@@ -278,7 +282,7 @@ export const ruContent = {
       },
       {
         question: "Есть ли комиссия за оплату картой?",
-        answer: "Комиссия Rublix за оплату картами МИР и Visa составляет 0%.",
+        answer: `Комиссия Rublix за оплату картами МИР и Visa составляет ${CARD_PAYMENT_FEE}.`,
       },
       {
         question: "Как пополнить кошелёк?",
