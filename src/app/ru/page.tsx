@@ -10,12 +10,12 @@ export async function generateMetadata(): Promise<Metadata> {
     title: content.metadata.title,
     description: content.metadata.description,
     alternates: {
-      canonical: "/ru",
+      canonical: "/ru/",
     },
     openGraph: {
       type: "website",
       locale: "ru_RU",
-      url: "/ru",
+      url: "/ru/",
       siteName: "Rublix",
       title: content.metadata.title,
       description: content.metadata.description,

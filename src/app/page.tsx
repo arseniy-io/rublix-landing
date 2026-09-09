@@ -1,5 +1,2 @@
-import { redirect } from "next/navigation";
-
-export default function HomePage() {
-  redirect("/ru");
-}
+export { generateMetadata } from "@/app/ru/page";
+export { default } from "@/app/ru/page";
