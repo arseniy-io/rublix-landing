@@ -4,7 +4,7 @@ import type { Metadata, Viewport } from "next";
 import "@/app/globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://rublix-wallet.com"),
+  metadataBase: new URL("https://landing.rublix-wallet.com"),
   applicationName: "Rublix",
   authors: [{ name: "Rublix" }],
   creator: "Rublix",

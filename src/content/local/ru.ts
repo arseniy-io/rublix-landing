@@ -1,5 +1,9 @@
 import type { LandingContent } from "@/content/types";
-import { CARD_PAYMENT_FEE, VISA_ISSUE_PRICE } from "@/content/productFacts";
+import {
+  CARD_PAYMENT_FEE,
+  VISA_ISSUE_PRICE,
+  WITHDRAWAL_FEE,
+} from "@/content/productFacts";
 
 const ACCOUNT_URL = "https://lk.rublix-wallet.com";
 const SUPPORT_URL = "https://t.me/rublix_support";
@@ -117,7 +121,7 @@ export const ruContent = {
           { label: "Комиссия за оплату", value: CARD_PAYMENT_FEE },
           { label: "Мобильная оплата", value: "Apple Pay и Google Pay" },
           { label: "Лимит за операцию", value: "50 000 $" },
-          { label: "География", value: "Не работает в Украине и Беларуси" },
+          { label: "География", value: "Не работает в России, Украине и Беларуси" },
         ],
         action: {
           label: "Оформить карту Visa",
@@ -147,15 +151,15 @@ export const ruContent = {
       {
         icon: "send",
         title: "Вывод рублей",
-        emphasis: "Комиссия - 0%",
+        emphasis: `Комиссия - ${WITHDRAWAL_FEE}`,
         description: "Моментальный вывод на подтверждённые банковские реквизиты.",
         tags: ["СБП", "Банковская карта"],
       },
       {
         icon: "refresh",
         title: "Переводы внутри Rublix",
-        emphasis: "До 100 000 ₽ без комиссии",
-        description: "С суммы свыше 100 000 ₽ в месяц взимается комиссия 1%.",
+        emphasis: "Без отдельной комиссии",
+        description: "Перевод между кошельками Rublix. Вывод на внешние реквизиты оплачивается отдельно.",
         tags: ["Между кошельками"],
       },
     ],
@@ -193,14 +197,14 @@ export const ruContent = {
   },
   tariffs: {
     title: "Основные тарифы и лимиты",
-    snapshot: "Условия на 1 сентября 2026 года",
+    snapshot: "Комиссии: 9 сентября 2026. Лимиты: 30 августа 2026.",
     intro: "Перед оформлением проверьте актуальные значения в личном кабинете.",
     summary: [
       { icon: "card", label: "МИР", value: "0 ₽" },
       { icon: "card", label: "Visa", value: VISA_ISSUE_PRICE },
       { icon: "wallet", label: "Пополнение", value: "0%" },
       { icon: "check", label: "Оплата", value: CARD_PAYMENT_FEE },
-      { icon: "send", label: "Вывод рублей", value: "0%" },
+      { icon: "send", label: "Вывод рублей", value: WITHDRAWAL_FEE },
     ],
     cardsTitle: "Лимиты карт",
     cardRows: [
@@ -228,7 +232,7 @@ export const ruContent = {
       { method: "МТС Деньги", operation: "400 000 ₽", daily: "400 000 ₽", monthly: "3 000 000 ₽" },
     ],
     withdrawalNote:
-      "Для указанных способов вывода рублей комиссия составляет 0%. Комиссию и лимиты вывода USDT уточняйте отдельно.",
+      `Комиссия Rublix за вывод средств составляет ${WITHDRAWAL_FEE}. Лимиты и возможные сетевые расходы вывода USDT уточняйте отдельно.`,
   },
   restrictions: {
     title: "Что важно знать до оформления",
@@ -236,7 +240,7 @@ export const ruContent = {
     items: [
       { icon: "info", text: "Снятие наличных недоступно" },
       { icon: "send", text: "Переводы по номеру карты недоступны" },
-      { icon: "globe", text: "Visa не работает в Украине и Беларуси" },
+      { icon: "globe", text: "Visa не работает в России, Украине и Беларуси" },
       { icon: "info", text: "Доступность оплаты зависит от продавца и платёжной инфраструктуры" },
     ],
   },
@@ -300,7 +304,7 @@ export const ruContent = {
       {
         question: "Где работает Visa?",
         answer:
-          "Visa предназначена для зарубежных сайтов, подписок и обычных магазинов. Карта не работает в Украине и Беларуси. Доступность операции может зависеть от продавца и платёжной инфраструктуры.",
+          "Visa предназначена для зарубежных сайтов, подписок и обычных магазинов. Карта не работает в России, Украине и Беларуси. Доступность операции может зависеть от продавца и платёжной инфраструктуры.",
       },
       {
         question: "Можно ли добавить карты в телефон?",
