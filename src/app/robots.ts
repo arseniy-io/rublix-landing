@@ -8,6 +8,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://landing.rublix-wallet.com/sitemap.xml",
+    sitemap: "https://rublix-wallet.com/sitemap.xml",
   };
 }
